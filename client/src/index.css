@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-beige font-body;
+  }
+}
+
+@layer components {
+  .gold-text {
+    background: linear-gradient(135deg, #D4AF37, #F5D76E, #B8860B, #F5D76E, #D4AF37);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px rgba(139, 0, 0, 0.3), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  }
+
+  .gold-border {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, #D4AF37, #F5D76E, #B8860B) 1;
+  }
+
+  .btn-gold {
+    @apply relative overflow-hidden px-8 py-3 font-serif text-dark-bg font-semibold tracking-widest uppercase text-sm;
+    background: linear-gradient(135deg, #D4AF37, #F5D76E, #B8860B);
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 60px rgba(212, 175, 55, 0.3);
+  }
+
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-gold:hover::before {
+    left: 100%;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    margin: 2rem 0;
+  }
+
+  .ornament {
+    color: #D4AF37;
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(5deg); }
+  66% { transform: translateY(-8px) rotate(-3deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cardUnfold {
+  0% { transform: perspective(1000px) rotateX(-90deg); opacity: 0; transform-origin: top; }
+  100% { transform: perspective(1000px) rotateX(0deg); opacity: 1; transform-origin: top; }
+}
+
+.card-unfold {
+  animation: cardUnfold 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+.timeline-line {
+  background: linear-gradient(180deg, transparent, #D4AF37, transparent);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+}
