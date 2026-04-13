@@ -10,11 +10,11 @@ const TimeUnit = ({ value, label, inView, delay }) => (
     className="flex flex-col items-center"
   >
     <motion.div
-      className="glass-card rounded-lg w-20 h-20 md:w-28 md:h-28 flex items-center justify-center relative overflow-hidden"
+      className="glass-card rounded-lg w-16 h-16 md:w-28 md:h-28 flex items-center justify-center relative overflow-hidden"
       animate={{ boxShadow: ["0 0 10px rgba(212,175,55,0.2)", "0 0 30px rgba(212,175,55,0.4)", "0 0 10px rgba(212,175,55,0.2)"] }}
       transition={{ duration: 2, repeat: Infinity, delay }}
     >
-      <span className="font-serif text-3xl md:text-5xl gold-text font-bold">
+      <span className="font-serif text-2xl md:text-5xl gold-text font-bold">
         {String(value).padStart(2, "0")}
       </span>
       <motion.div
@@ -23,13 +23,13 @@ const TimeUnit = ({ value, label, inView, delay }) => (
         transition={{ duration: 2, repeat: Infinity, delay: delay + 1 }}
       />
     </motion.div>
-    <p className="font-body text-gold/60 text-xs tracking-widest uppercase mt-3">{label}</p>
+    <p className="font-body text-gold/60 text-[10px] md:text-xs tracking-widest uppercase mt-2">{label}</p>
   </motion.div>
 );
 
 const Colon = () => (
   <motion.span
-    className="text-gold text-3xl md:text-5xl font-serif mb-6"
+    className="text-gold text-xl md:text-5xl font-serif mb-5"
     animate={{ opacity: [1, 0, 1] }}
     transition={{ duration: 1, repeat: Infinity }}
   >
@@ -94,7 +94,7 @@ const CountdownTimer = ({ targetDate }) => {
             <p className="font-serif text-3xl gold-text">The Day Has Arrived!</p>
           </motion.div>
         ) : (
-          <div className="flex items-center gap-4 md:gap-8">
+          <div className="flex items-center justify-center gap-2 md:gap-8 w-full px-2">
             <TimeUnit value={timeLeft.days} label="Days" inView={inView} delay={0} />
             <Colon />
             <TimeUnit value={timeLeft.hours} label="Hours" inView={inView} delay={0.1} />

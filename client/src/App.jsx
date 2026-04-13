@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import CoupleIllustration from "./components/CoupleIllustration";
 import InvitationCard from "./components/InvitationCard";
 import EventDetails from "./components/EventDetails";
 import CountdownTimer from "./components/CountdownTimer";
@@ -97,6 +98,7 @@ export default function App() {
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <main>
             <HeroSection coupleData={COUPLE_DATA} />
+            <CoupleIllustration coupleData={COUPLE_DATA} />
             <InvitationCard coupleData={COUPLE_DATA} />
             <div id="details">
               <EventDetails eventData={EVENT_DATA} />
