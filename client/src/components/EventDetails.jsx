@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const DetailCard = ({ icon, title, content, delay }) => {
+const DetailCard = ({ icon, title, content, delay, isDate }) => {
   const { ref, inView } = useInView({ threshold: 0.3, triggerOnce: true });
   return (
     <motion.div
@@ -12,7 +12,20 @@ const DetailCard = ({ icon, title, content, delay }) => {
       whileHover={{ y: -8 }}
       className="glass-card rounded-lg p-8 text-center"
     >
-      <div className="text-4xl mb-4">{icon}</div>
+      {isDate ? (
+        <div className="flex justify-center mb-4">
+          <div className="w-12 h-12 rounded-lg overflow-hidden border border-gold/40 flex flex-col">
+            <div className="bg-deepred text-beige text-[9px] font-bold tracking-widest uppercase flex items-center justify-center h-4">
+              MAY
+            </div>
+            <div className="bg-beige text-deepred text-lg font-bold flex items-center justify-center flex-1 font-serif">
+              13
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="text-4xl mb-4">{icon}</div>
+      )}
       <h4 className="font-serif text-lg gold-text mb-2 tracking-wide">{title}</h4>
       <p className="font-body text-beige/70 text-sm leading-relaxed">{content}</p>
     </motion.div>
@@ -23,7 +36,7 @@ const EventDetails = ({ eventData }) => {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const details = [
-    { icon: "📅", title: "Date", content: eventData.date, delay: 0 },
+    { icon: "📅", title: "Date", content: eventData.date, delay: 0, isDate: true },
     { icon: "🕐", title: "Time", content: eventData.time, delay: 0.1 },
     { icon: "📍", title: "Venue", content: eventData.venue, delay: 0.2 },
   ];
